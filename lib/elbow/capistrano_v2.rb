@@ -20,7 +20,7 @@ Capistrano::Configuration.instance(:must_exist).load do
     raise "EC2 Load Balancer not found for #{name} in region #{aws_region}" if load_balancer.nil?
 
     hostnames = load_balancer.instances.collect do |instance|
-      hostname = instance.dns_name || instance.private_ip_address
+      instance.dns_name || instance.private_ip_address
     end
 
     if args.first.instance_of? Hash
